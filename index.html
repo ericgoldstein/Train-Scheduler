@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Train Scheduler</title>
+
+<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+<script src="https://momentjs.com/downloads/moment.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+<body>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-3">Anytime is Train Time</h1>
+    <p class="lead">Choo Choo. Chee Chee</p>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <h3 class="panel-title">Current Train Schedule</h3>
+    </div>
+      <div class="panel-body">
+        <table class="table table-striped" id="trainTable">
+  <thead>
+    <tr>
+      <th scope="col">Train Name</th>
+      <th scope="col">Line</th>
+      <th scope="col">Destination</th>
+      <th scope="col">Frequency (min)</th>
+      <th scope="col">Next Arrival</th>
+      <th scope="col">Minutes Away</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add Train</h3>
+      </div>
+      <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleNAmeInput">Train Name</label>
+            <input type="text" class="form-control" id="TrainNameInput" aria-describedby="Train Name" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleLineInput">Line</label>
+            <input type="text" class="form-control" id="lineInput" aria-describedby="Train Line" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Destination</label>
+            <input type="text" class="form-control" id="destinationInput" placeholder="Destination">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">First Train Time (HH:mm - military time)</label>
+            <input type="text" class="form-control" id="trainTimeInput" placeholder="Start Date">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Frequency (min)</label>
+            <input type="number" class="form-control" id="frequencyInput" placeholder="">
+          </div>
+          <button type="submit" class="btn btn-primary" id="addTrainButton">Submit</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="assets/javascript/management.js"></script>
+
+
+</body>
+</html>
