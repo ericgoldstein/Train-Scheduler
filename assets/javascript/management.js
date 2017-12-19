@@ -3,21 +3,20 @@ var config = {
     authDomain: "train-database-ca4da.firebaseapp.com",
     databaseURL: "https://train-database-ca4da.firebaseio.com",
     projectId: "train-database-ca4da",
-    storageBucket: "",
+    storageBucket: "train-database-ca4da.appspot.com",
     messagingSenderId: "116796311367"
   };
   firebase.initializeApp(config);
 
 const database = firebase.database();
-// let trainData = new firebase("https://console.firebase.google.com/project/train-database-ca4da/database/train-database-ca4da/data");
 
 $('#addTrainButton').on('click', function(event) {
-
+event.preventDefault();
 let trainName = $("#trainNameInput").val().trim();
 let lineName = $("#lineInput").val().trim();;
 let destination = $("#destinationInput").val().trim();;
-let trainTimeInput = moment($("#trainTimeInput").val().trim(), "HH:mm").subrtact(10, "years").format("X");;
-let frequencyInput = $("#frequencyInput").val().Trim();
+let trainTimeInput = moment($("#trainTimeInput").val().trim(), "HH:mm").subtract(10, "years").format("X");;
+let frequencyInput = $("#frequencyInput").val().trim();
   
 
   let newTrain = {
@@ -28,7 +27,7 @@ let frequencyInput = $("#frequencyInput").val().Trim();
     trainTime: trainTimeInput,
     frequency: frequencyInput,
    } 
-   trainData.push(newTrain);
+   database.ref().push(newTrain);
 
   $('#trainNameInput').val('');
   $('#lineInput').val('');
@@ -52,13 +51,12 @@ database.ref().on('child_added' , function(childSnapshot, prevChildKey){
   let frequencyInput = childSnapshot.val().frequency;
 
   let diffTime = moment().diff(moment.unix(trainTimeInput), "minutes");
-  let timeRemainder = moment().diff(moment.unix(trainTimeInput), "minutes") % trainTimeInput ;
-  let minutes = frequencyInput - timeRemainder;
+  let timeRemainder = moment().diff(moment.unix(parseInt(trainTimeInput)), "minutes") % trainTimeInput ;
+  let minutes = frequencyInput + timeRemainder;
 
   let nextTrainArrival = moment().add(minutes, "m").format("hh:mm A");
 
- // totalMonths = moment().diff(moment(employeeStart), 'months');
- // totalBilled = totalMonths * employeeSalary;
+ 
 
 $('#trainTable > tbody').append("<tr><td>" + trainName + "</td><td>" + lineName + "</td><td>"
 + destination + "</td><td>" + frequencyInput + "minutes" + "</td><td>" + nextTrainArrival + "</td><td>" + minutes + "</td></tr>");
