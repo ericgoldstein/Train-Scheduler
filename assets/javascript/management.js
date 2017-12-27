@@ -51,8 +51,8 @@ database.ref().on('child_added' , function(childSnapshot, prevChildKey){
   let frequencyInput = childSnapshot.val().frequency;
 
   let diffTime = moment().diff(moment.unix(trainTimeInput), "minutes");
-  let timeRemainder = moment().diff(moment.unix(parseInt(trainTimeInput)), "minutes") % trainTimeInput ;
-  let minutes = frequencyInput + timeRemainder;
+  let timeRemainder = moment().diff(moment.unix(trainTimeInput), "minutes") % frequencyInput ;
+  let minutes = frequencyInput - timeRemainder;
 
   let nextTrainArrival = moment().add(minutes, "m").format("hh:mm A");
 
